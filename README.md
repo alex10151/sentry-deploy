@@ -187,13 +187,13 @@ Raven.captureBreadcrumb({
 
 ```bash
 npm install @sentry/browser --save
-or
+or
 yarn add @sentry/browser
 ```
 
 支持[懒加载](https://docs.sentry.io/platforms/javascript/install/lazy-load-sentry/)。
 
-####  使用：
+#### 使用：
 
 - 1. 初始化与配置
 
