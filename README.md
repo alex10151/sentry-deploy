@@ -23,7 +23,7 @@ Sentry 分为服务端和客户端 SDK，前者可以直接使用它家提供的
 npm install raven-js --save
 ```
 
-####  使用：
+####  使用：
 
 - 1. 在客户端配置 DSN（Data Source Name）
 
