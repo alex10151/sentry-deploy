@@ -1,0 +1,21 @@
+{
+  "name": "connect-to-sentry",
+  "version": "1.0.0",
+  "description": "connect projects to sentry",
+  "main": "install.js",
+  "scripts": {
+    "start": "node install.js"
+  },
+  "browser": {
+    "child_process": false
+  },
+  "author": "hsw1015",
+  "license": "ISC",
+  "dependencies": {
+    "@sentry/browser": "^6.0.0",
+    "@sentry/cli": "^1.61.0",
+    "@sentry/integrations": "^6.0.1",
+    "@sentry/node": "^6.0.0",
+    "@sentry/tracing": "^6.0.0"
+  }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://s2.jiediankeji.com/lib/sentry-fe.bundle-0.0.1.js"></script>
+    <!-- <script
+      src="http://172.20.5.44:9000/js-sdk-loader/15ac0d977719450999b191831a2864b2.min.js"
+      crossorigin="anonymous"
+    ></script> -->
+  </head>
+  <body>
+    <div>hello world!</div>
+    <script>
+      console.error("AAAAAAAAA");
+      // Promise.reject('BBBBBBBBB');
+    </script>
+    <script>
+      let counter = 0;
+      function onbtnclick(e) {
+        console.error(`=========>>>>>>>>${counter++}`);
+        Promise.reject(`=========>>>>>>>>${counter++}`);
+      }
+    </script>
+    <div>{{counter}}</div>
+    <button onclick="onbtnclick()">click</button>
+  </body>
+</html>
