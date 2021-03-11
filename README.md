@@ -1,10 +1,15 @@
 # Sentry 部署过程（基于 docker）
 
-sentry back-end server: http://172.20.5.44:9000/
+[dev环境WEB服务器].  sentry back-end server: https://qcloud-beacon-rd.int.jiediankeji.com/。
+前端引入方式：
+引入方式： html层使用script标签引入(以stark-fe项目为例子):(ps.environment和project是业务上被需要的)
 
-dev部署方式： html层使用script标签引入
-
-pub/线上部署方式： 在构建流程使用sentry-cli进行版本控制
+```html
+<script src='src= https://s2.jiediankeji.com/lib/sentry-fe.bundle-0.0.1.js'></script>
+<script>
+   window.customizedSentryClient({environment:"dev", tags: { project: "stark-fe" } });
+</script>
+```
 
 
 ## Sentry 介绍：
@@ -359,7 +364,28 @@ sentry的event超过90天默认会清理掉，设置清理时间可以在.env中
 ```text
 SENTRY_EVENT_RETENTION_DAYS
 ```
-如果不需要清理服务，可以在<font color='#AFF'>docker-compose.yml</font>  中删除 <font color='#AFF'>sentry-cleanup</font> 服务。
+
+## 钉钉机器人部署：（烽火台-前线人员）
+
+由于官方没有默认支持dingTalk的Sentry plugin，网上开源的plugin有各种各样的问题，这里我参考github上的一些例子，重写了一份plugin：（推到了https://pypi.org/project/sentry-dingding-2021/0.1.0/）
+
+
+在sentry-onpremise中的requirement.txt中加入以下依赖:
+```text
+sentry-dingding-2021
+```
+重新构建镜像并重启：
+
+```bash
+docker-compose build
+docker-compose restart
+```
+
+打开web service地址，在projects->Legacy Integrations 中打开DingDing 并且配置钉钉的机器人的webhook的access_token。
+
+dingtalk webhook : https://oapi.dingtalk.com/robot/send?access_token=cbbcd39c8c4b5830bbf606b667cccb261bc1a31a1f6df5f20a12bfb14941a916
+
+点击测试plugin最后可以看到群里成功接受到了钉钉通知。
 
 
 
